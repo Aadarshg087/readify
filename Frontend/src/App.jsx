@@ -7,18 +7,25 @@ import GoogleLogin from "./components/googleLogin";
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
 
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import CheckLoginInfo from "./components/CheckLoginInfo";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  function GoogleAuthWrapper() {
-    return (
-      <GoogleOAuthProvider clientId="216687967253-4d2jposo3g3meofj2mucvpf5dl0nqd2v.apps.googleusercontent.com">
-        <GoogleLogin />
-      </GoogleOAuthProvider>
-    );
-  }
+  // function GoogleAuthWrapperLogin() {
+  //   return (
+  //     <GoogleOAuthProvider clientId="216687967253-4d2jposo3g3meofj2mucvpf5dl0nqd2v.apps.googleusercontent.com"></GoogleOAuthProvider>
+  //   );
+  // }
+
+  // function GoogleAuthWrapperRegister() {
+  //   return (
+  //     <GoogleOAuthProvider clientId="216687967253-4d2jposo3g3meofj2mucvpf5dl0nqd2v.apps.googleusercontent.com">
+  //       <Register />
+  //     </GoogleOAuthProvider>
+  //   );
+  // }
 
   const PrivateRouteLogin = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />;
@@ -28,7 +35,8 @@ function App() {
     <BrowserRouter>
       <CheckLoginInfo setIsAuthenticated={setIsAuthenticated} />
       <Routes>
-        <Route path="/login" element={<GoogleAuthWrapper />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
           path="/dashboard"

@@ -6,10 +6,10 @@ const CheckLoginInfo = ({ setIsAuthenticated }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const data = localStorage.getItem("userInfo");
-    const token = JSON.parse(data)?.token;
+    const token = localStorage.getItem("userInfo");
     if (token) {
       setIsAuthenticated(true);
+      console.log("Got authenticated");
       if (location.pathname === "/" || location.pathname === "/login") {
         navigate("/dashboard");
       }

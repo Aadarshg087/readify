@@ -33,11 +33,7 @@ const GoogleLogin = () => {
     flow: "auth-code",
   });
 
-  return (
-    <div className="App">
-      <button onClick={googleLogin}>Login with Google</button>
-    </div>
-  );
+  return <button onClick={googleLogin}>Login with Google</button>;
 };
 
 export default GoogleLogin;

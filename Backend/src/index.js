@@ -18,10 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+console.log(process.env.CORS);
+
 app.use(
   cors({
     origin: process.env.CORS,
-    allowedHeaders: true,
   })
 );
 
@@ -34,9 +35,9 @@ connectDB()
   });
 
 //   Routes
+app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/books", bookRouter);
-app.use("/auth", authRouter);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on ${process.env.PORT}...`);
